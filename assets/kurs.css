@@ -58,6 +58,21 @@ blockquote { margin: 1.2rem 0; padding-left: 1rem; border-left: 3px solid var(--
 .quiz .rueckmeldung { margin-top: .5rem; min-height: 1.4em; }
 .quiz .richtig { color: var(--ok); }
 .quiz .falsch { color: var(--fail); }
+.quiz legend { line-height: 1.4; }
+.quiz .erklaerung { margin: .3rem 0 0; padding: .6rem .8rem; background: var(--box); border-radius: 4px; font-size: .95rem; }
+.quiz .ergebnis { font-weight: 600; }
+
+/* Tabellen */
+.tabelle { width: 100%; overflow-x: auto; margin: 1.2rem 0; }
+table { border-collapse: collapse; width: 100%; font: .95rem/1.45 var(--sans); }
+th, td { text-align: left; vertical-align: top; padding: .5rem .6rem; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; color: var(--muted); font-size: .85rem; letter-spacing: .03em; }
+
+/* Schrittfolgen */
+ol.schritte { padding-left: 1.4rem; }
+ol.schritte > li { margin: .7rem 0; padding-left: .3rem; }
+ol.schritte > li::marker { font-weight: 600; color: var(--accent); }
+.praxis { font: 600 .7rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 3px; padding: 0 .3rem; vertical-align: .15em; }
 
 /* Navigation */
 nav.lektion { font-family: var(--sans); font-size: .9rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
