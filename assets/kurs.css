@@ -1,0 +1,70 @@
+/* Gemeinsames Stylesheet aller Lektionen und Spickzettel (Sokrates). */
+:root {
+  --bg: #fffff8;
+  --text: #1f1f1c;
+  --muted: #6b6b63;
+  --accent: #8a3b12;
+  --rule: #e4e1d6;
+  --box: #f6f3e8;
+  --ok: #2f6b3a;
+  --fail: #9b2c2c;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161614; --text: #e9e6dc; --muted: #a29e92; --accent: #e3a072;
+    --rule: #34322c; --box: #22211d; --ok: #7cc28a; --fail: #ec8b8b;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161614; --text: #e9e6dc; --muted: #a29e92; --accent: #e3a072;
+  --rule: #34322c; --box: #22211d; --ok: #7cc28a; --fail: #ec8b8b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 1.15rem/1.6 var(--serif);
+}
+main { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+h1 { font-weight: 400; font-size: 2.1rem; line-height: 1.2; margin: 0 0 .3rem; }
+h2 { font-weight: 400; font-style: italic; font-size: 1.45rem; margin: 2.2rem 0 .6rem; }
+h3 { font-weight: 600; font-size: 1.1rem; margin: 1.6rem 0 .4rem; }
+a { color: var(--accent); text-underline-offset: 2px; }
+.untertitel { color: var(--muted); font-style: italic; margin: 0 0 2rem; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+code, pre { font-family: ui-monospace, Consolas, monospace; font-size: .9em; }
+pre { background: var(--box); padding: .8rem 1rem; overflow-x: auto; border-radius: 4px; }
+blockquote { margin: 1.2rem 0; padding-left: 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+
+/* Kästen */
+.kasten { background: var(--box); padding: 1rem 1.2rem; border-radius: 4px; margin: 1.5rem 0; }
+.kasten > :first-child { margin-top: 0; }
+.kasten > :last-child { margin-bottom: 0; }
+.ziel::before { content: "Ziel dieser Lektion"; display: block; font: 600 .8rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: .3rem; }
+.quelle::before { content: "Zum Weiterlesen"; display: block; font: 600 .8rem var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: .3rem; }
+.fragen { font-family: var(--sans); font-size: .95rem; color: var(--muted); }
+
+/* Randnotizen */
+.randnotiz { font-size: .9rem; color: var(--muted); display: block; margin: .3rem 0 1rem; padding-left: .8rem; border-left: 2px solid var(--rule); }
+
+/* Quiz */
+.quiz { margin: 1.5rem 0; font-family: var(--sans); font-size: 1rem; }
+.quiz fieldset { border: 1px solid var(--rule); border-radius: 4px; padding: 1rem; margin: 0 0 1rem; }
+.quiz legend { font-weight: 600; padding: 0 .3rem; }
+.quiz label { display: block; padding: .35rem .2rem; cursor: pointer; }
+.quiz button { font: inherit; padding: .45rem 1rem; border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: 4px; cursor: pointer; }
+.quiz .rueckmeldung { margin-top: .5rem; min-height: 1.4em; }
+.quiz .richtig { color: var(--ok); }
+.quiz .falsch { color: var(--fail); }
+
+/* Navigation */
+nav.lektion { font-family: var(--sans); font-size: .9rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  main { max-width: none; padding: 0; }
+  .quiz button, nav.lektion, .fragen { display: none; }
+  a { color: #000; }
+}
