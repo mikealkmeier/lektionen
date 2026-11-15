@@ -8,12 +8,14 @@
      </fieldset> …
      <p class="ergebnis" aria-live="polite"></p>
    </form>
+   Optional: <form class="quiz" data-hinweis="…"> setzt den Text bei falscher Antwort.
    Rückmeldung sofort bei Auswahl; die Erklärung erscheint erst bei richtiger Antwort.
    Gezählt wird jeweils der erste Versuch. Nichts wird gespeichert. */
 (function () {
   document.querySelectorAll("form.quiz").forEach(function (form) {
     var fragen = form.querySelectorAll("fieldset[data-richtig]");
     var ergebnis = form.querySelector(".ergebnis");
+    var hinweis = form.dataset.hinweis || "Noch nicht. Versuch es noch einmal.";
     var ersterVersuch = {};
 
     form.addEventListener("submit", function (e) { e.preventDefault(); });
@@ -28,7 +30,7 @@
 
         rueckmeldung.textContent = richtig
           ? "Richtig."
-          : "Noch nicht. Denk an die Probe und versuch es noch einmal.";
+          : hinweis;
         rueckmeldung.className = "rueckmeldung " + (richtig ? "richtig" : "falsch");
         if (erklaerung) erklaerung.hidden = !richtig;
 
